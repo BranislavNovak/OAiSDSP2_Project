@@ -5,7 +5,6 @@
 
 void sampleAndHold(const uchar input[], int xSize, int ySize, uchar output[], int newXSize, int newYSize)
 {
-	/* TO DO */
 	double horizontal_scale = ((double)xSize) / newXSize;
 	double vertical_scale = ((double)ySize) / newYSize;
 
@@ -34,7 +33,6 @@ void sampleAndHold(const uchar input[], int xSize, int ySize, uchar output[], in
 
 void bilinearInterpolate(const uchar input[], int xSize, int ySize, uchar output[], int newXSize, int newYSize)
 {
-	/* TO DO */
 	double horizontal_scale = ((double)xSize) / newXSize;
 	double vertical_scale = ((double)ySize) / newYSize;
 	
@@ -81,14 +79,13 @@ void bicubicInterpolate(const uchar input[], int xSize, int ySize, uchar output[
 
 void imageTransform(const uchar input[], int xSize, int ySize, uchar output[], double k1, double k2)
 {
-	/* TO DO */
 	for (int x = 0; x < xSize; x++) { 
 		for (int y = 0; y < ySize; y++){
 
 			// Setting the new variable newY that is used for iteration through inImg. 
 			int newY = y + k1 * ySize * sin(2 * 3.14 * x / (xSize * k2));
 		   			
-			if (newY >= 0 && newY < ySize && x >= 0 && y < xSize) {
+			if (newY >= 0 && newY < ySize && x >= 0 && x < xSize) {
 				// Checking if the iterators are out of range in inImg.
 				output[3 * x + y * xSize * 3] = input[3 * x + newY * xSize * 3];			// R
 				output[3 * x + 1 + y * xSize * 3] = input[3 * x + 1 + newY * xSize * 3];	// G
@@ -106,7 +103,6 @@ void imageTransform(const uchar input[], int xSize, int ySize, uchar output[], d
 
 void imageTransformBilinear(const uchar input[], int xSize, int ySize, uchar output[], double k1, double k2)
 {
-	/* TO DO */
 	for (int x = 0; x < xSize; x++){
 		for (int y = 0; y < ySize; y++){
 

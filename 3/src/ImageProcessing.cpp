@@ -9,8 +9,6 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 	int X_SIZE = inImgs->width();
 	int Y_SIZE = inImgs->height();
 	
-	/* NOTE: Calculate output image resolution and construct output image object */
-
 	if(progName == "Sample and hold") 
 	{	
 		/* Input image data in RGB format can be obtained with inImgs->bits() */
@@ -20,7 +18,7 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 		double horizontal_scale = params[1];
 		double vertical_scale = params[0];
 
-		/* TO DO: Calculate output image resolution and construct output image object */
+		/* Calculating output image resolution and construct output image object */
 
 		// -> Size of X and Y for outImgs. It is equal to inImgs X and Y multiplied 
 		//    by horizontal and vertical scale substracted with remaining of module 4.
@@ -35,7 +33,7 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 		//    Class is declared in qimage.h as  QImage(int width, int height, Format format);
 		new (outImgs) QImage(newXSize, newYSize, inImgs->format());
 
-		/* TO DO: Perform Sample and hold interpolation  */
+		/* Performing Sample and hold interpolation  */
 		sampleAndHold(inImgs->bits(), X_SIZE, Y_SIZE, outImgs->bits(), newXSize, newYSize);
 	}
 	else if (progName == "Bilinear") 
@@ -47,7 +45,7 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 		double horizontal_scale = params[1];
 		double vertical_scale = params[0];
 
-		/* TO DO: Calculate output image resolution and construct output image object */
+		/* Calculating output image resolution and construct output image object */
 
 		// -> Size of X and Y for outImgs. It is equal to inImgs X and Y multiplied 
 		//    by horizontal and vertical scale substracted with remaining of module 4.
@@ -62,7 +60,7 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 		//    Class is declared in qimage.h as  QImage(int width, int height, Format format);
 		new (outImgs) QImage(newXSize, newYSize, inImgs->format());
 
-		/* TO DO: Perform Bilinear interpolation  */
+		/* Performing Bilinear interpolation  */
 		bilinearInterpolate(inImgs->bits(), X_SIZE, Y_SIZE, outImgs->bits(), newXSize, newYSize);
 	}
 	else if(progName == "Transform") 
@@ -73,10 +71,10 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 		double amplitude = params[0];
 		double frequency = params[1];
 
-		/* TO DO: Construct output image object */
+		/* Constructing output image object */
 		new (outImgs) QImage(X_SIZE, Y_SIZE, inImgs->format());
 
-		/* TO DO: Perform image transformation */
+		/* Performing image transformation */
 		imageTransform(inImgs->bits(), X_SIZE, Y_SIZE, outImgs->bits(), amplitude, frequency);		  	
 	}
 	else if (progName == "Transform Bilinear") 
@@ -87,10 +85,10 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 		double amplitude = params[0];
 		double frequency = params[1];
 
-		/* TO DO: Construct output image object */
+		/* Constructing output image object  */
 		new (outImgs) QImage(X_SIZE, Y_SIZE, inImgs->format());
 
-		/* TO DO: Perform image transformation with bilinear interpolation */
+		/* Performing image transformation with bilinear interpolation */
 		imageTransformBilinear(inImgs->bits(), X_SIZE, Y_SIZE, outImgs->bits(), amplitude, frequency);
 	}
 
