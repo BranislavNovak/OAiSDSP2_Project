@@ -77,17 +77,21 @@ void imageProcessingFun(const QString& progName, QImage* const outImgs, const QI
 		new (outImgs) QImage(X_SIZE, Y_SIZE, inImgs->format());
 
 		/* TO DO: Perform image transformation */
-		imageTransform(inImgs->bits(), X_SIZE, Y_SIZE, outImgs->bits(), amplitude, frequency);
-	
+		imageTransform(inImgs->bits(), X_SIZE, Y_SIZE, outImgs->bits(), amplitude, frequency);		  	
 	}
 	else if (progName == "Transform Bilinear") 
 	{
 		/* Input image data in RGB format can be obtained with inImgs->bits() */
 		/* k1 and k2 parameters are given as params[0] and params[1]*/
 		
+		double amplitude = params[0];
+		double frequency = params[1];
+
 		/* TO DO: Construct output image object */
+		new (outImgs) QImage(X_SIZE, Y_SIZE, inImgs->format());
 
 		/* TO DO: Perform image transformation with bilinear interpolation */
+		imageTransformBilinear(inImgs->bits(), X_SIZE, Y_SIZE, outImgs->bits(), amplitude, frequency);
 	}
 
 }
